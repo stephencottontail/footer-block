@@ -1,0 +1,73 @@
+{
+  "name": "footer-block",
+  "version": "1.0.0",
+  "description": "Footer block",
+  "main": [
+    "index.js",
+    "style.css",
+    "editor.css"
+  ],
+  "source": [
+    "src/index.js",
+    "src/style.css",
+    "src/editor.css"
+  ],
+  "targets": {
+    "main": {
+      "engines": {
+        "browsers": [
+          "> 2%",
+          "last 2 versions"
+        ]
+      }
+    }
+  },
+  "babel": {
+    "presets": [
+      "@wordpress/babel-preset-default"
+    ],
+    "plugins": [
+      [
+        "@wordpress/babel-plugin-import-jsx-pragma",
+        {
+          "scopeVariable": "createElement",
+          "scopeVariableFrag": "Fragment",
+          "source": "@wordpress/element",
+          "isDefault": false
+        }
+      ],
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragma": "createElement",
+          "pragmaFrag": "Fragment"
+        }
+      ]
+    ]
+  },
+  "alias": {
+    "React": "@wordpress/element"
+  },
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "test": "rm -rf dist/ && npx parcel build src/index.js src/style.css src/editor.css",
+    "watch": "npx parcel watch src/index.js src/style.css src/editor.css"
+  },
+  "repository": "git@github.com:stephencottontail/footer-block.git",
+  "author": "Stephen Dickinson <stephencottontail@me.com>",
+  "license": "GPL-2.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@wordpress/babel-preset-default": "^4.6.0",
+    "@wordpress/blocks": "^6.7.0",
+    "@wordpress/data": "^4.9.0",
+    "@wordpress/element": "^2.8.0",
+    "autoprefixer": "^9.6.1",
+    "parcel": "^2.0.0-alpha.1.1",
+    "postcss-modules": "^1.4.1"
+  },
+  "dependencies": {
+    "core-js": "3"
+  }
+}
